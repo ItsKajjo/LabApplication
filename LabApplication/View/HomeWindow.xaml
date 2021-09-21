@@ -1,0 +1,50 @@
+﻿<Window x:Class="LabApplication.View.HomeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LabApplication.View"
+        xmlns:viewmodel="clr-namespace:LabApplication.ViewModel"
+        d:DataContext="{d:DesignInstance Type=viewmodel:HomeViewModel}"
+        mc:Ignorable="d"
+        Title="Лаборатория: Панель управления" Height="550" Width="900" MinHeight="300" MinWidth="500"
+        WindowStartupLocation="CenterScreen"
+        FontSize="18" Icon="\Resources\Icon.ico" Closing="Window_Closing" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <DockPanel Grid.Row="0">
+            <Image Source="\Resources\Logo.png" HorizontalAlignment="Left" Margin="5"/>
+            <TextBlock VerticalAlignment="Center"
+                Text="Панель действий" FontSize="30" FontFamily="Verdana" Foreground="#fc6060"/>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Border Height="45" Width="45" CornerRadius="90" Margin="5">
+                    <Border.Background>
+                        <ImageBrush Stretch="Fill" ImageSource="\Resources\ProfilePicturePlaceholder.png"/>
+                    </Border.Background>
+                </Border>
+
+                <StackPanel Orientation="Vertical" Margin="0, 5, 0, 5">
+                    <TextBlock Text="{Binding CurrentUserName}" Margin="1" FontWeight="Bold"/>
+                    <TextBlock Text="{Binding CurrentUserRole}" Margin="1" Foreground="DimGray"/>
+                </StackPanel>
+                <Button Margin="10" Padding="5" Background="DeepSkyBlue"
+                        Command="{Binding Logout}">
+                    <Image Source="\Resources\exit.png"/>
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
+        </DockPanel>
+        
+        <Separator Grid.Row="1" VerticalAlignment="Top"/>
+        <Frame x:Name="NavFrame" Grid.Row="1" Margin="0,5,0,0"/>
+    </Grid>
+</Window>
