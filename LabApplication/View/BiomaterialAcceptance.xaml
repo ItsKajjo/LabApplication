@@ -27,35 +27,6 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <TextBlock Text="Принятие биометариала" FontSize="24" Foreground="{StaticResource DarkGrayText}" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3"/>
-        <!--<StackPanel Orientation="Vertical" Grid.Row="1">
-            <StackPanel Orientation="Horizontal">
-                <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                    <TextBlock Text="Выберите пациента:" Foreground="{StaticResource DarkGrayText}"/>
-                    <TextBlock Text="Или создайте нового." Foreground="{StaticResource LightGrayText}"/>
-                </StackPanel>
-
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <ListView Height="24" Width="120"/>
-                </StackPanel>
-            </StackPanel>
-
-            <StackPanel Orientation="Horizontal" Margin="0, 10, 0, 0">
-                <StackPanel Orientation="Vertical">
-                    <TextBlock Text="Введите код пробирки (номер заказа):" Foreground="{StaticResource DarkGrayText}"/>
-                    <TextBlock Text="Используйте предложенный (рекомендуется), или введите вручную." Foreground="{StaticResource LightGrayText}"/>
-                </StackPanel>
-
-                <ListView Height="24" Width="120"/>
-            </StackPanel>
-
-            <StackPanel Orientation="Horizontal">
-                <StackPanel Orientation="Vertical">
-                    <TextBlock Text="Выберите предоставляемые услуги:" Foreground="{StaticResource DarkGrayText}"/>
-                    <TextBlock Text="Для формирования заказа необходимо выбрать хотя бы одну." Foreground="{StaticResource LightGrayText}"/>
-                </StackPanel>
-            </StackPanel>
-
-        </StackPanel>-->
 
         <DockPanel Grid.Row="1" Grid.Column="1" Margin="0, 20, 0, 20">
             <TextBlock VerticalAlignment="Center" DockPanel.Dock="Left">

@@ -16,7 +16,6 @@ namespace LabApplication.Model
         {
             new User("infinity", "bqwr13", "Robert Cannon", Role.LaboratoryAssistant),
             new User("alpha", "34$ost1", "Garey Atkins", Role.SystemAdministrator),
-            new User("TestLogin", "TestPassword", "FirstName LastName", Role.SystemAdministrator)
         };
     }
 }
