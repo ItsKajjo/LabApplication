@@ -10,7 +10,7 @@
         mc:Ignorable="d"
         Title="Лаборатория" Height="450" Width="380" MinHeight="380" MinWidth="330"
         WindowStartupLocation="CenterScreen"
-        FontSize="18" Icon="\Resources\Icon.ico" Closing="Window_Closing" Loaded="Window_Loaded">
+        FontSize="18" Closing="Window_Closing" Loaded="Window_Loaded">
     <!-- в vs2022 котору я использую, и vs2019 почему-то по-разному прописывается путь
     к картинкам (так еще в разных частях кода студия ругается на одинаково написанные пути, 
     если картинка не отображается, в пути уберите две точки перед \Resources

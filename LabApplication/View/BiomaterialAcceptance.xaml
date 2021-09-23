@@ -4,6 +4,8 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:LabApplication.View"
+      xmlns:viewmodel="clr-namespace:LabApplication.ViewModel" 
+      d:DataContext="{d:DesignInstance Type=viewmodel:BiomateriaViewModel}"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="BiomaterialAcceptance" Background="White" FontSize="16">
@@ -26,7 +28,8 @@
             <RowDefinition Height="auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBlock Text="Принятие биометариала" FontSize="24" Foreground="{StaticResource DarkGrayText}" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3"/>
+        <TextBlock Text="Принятие биометариала" FontSize="24" Foreground="{StaticResource DarkGrayText}" 
+                   Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Margin="10,0,0,0"/>
 
         <DockPanel Grid.Row="1" Grid.Column="1" Margin="0, 20, 0, 20">
             <TextBlock VerticalAlignment="Center" DockPanel.Dock="Left">
@@ -35,8 +38,20 @@
                 <Run Text="Или создайте нового." Foreground="{StaticResource LightGrayText}"/>
             </TextBlock>
 
-            <ListView Height="30" Width="190" HorizontalAlignment="Right"
-                      Template="{StaticResource ListViewRoundCorners}"/>
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                <ComboBox Height="30" Width="190" HorizontalAlignment="Right"
+                      ItemsSource="{Binding Patients}" IsSynchronizedWithCurrentItem="True"
+                      DisplayMemberPath="FullName"/>
+
+                <Button Height="30" Margin="10,0,0,0" Background="DeepSkyBlue">
+                    <Image Source="\Resources\AddUser.png"/>
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
         </DockPanel>
 
         <DockPanel Grid.Column="1" Grid.Row="2" Margin="0, 20, 0, 20">
@@ -47,7 +62,7 @@
                      Foreground="{StaticResource LightGrayText}"/>
             </TextBlock>
 
-            <TextBox Template="{StaticResource TextBoxRoundCorners}" Height="30" Width="190" HorizontalAlignment="Right"/>
+            <TextBox Template="{StaticResource TextBoxRoundCorners}" Height="30" Width="230" HorizontalAlignment="Right"/>
         </DockPanel>
 
         <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Vertical" Margin="0, 20, 0, 20">
@@ -58,18 +73,53 @@
                 <Run Text="Для формирования заказа необходимо выбрать хотя бы одну." Foreground="{StaticResource LightGrayText}"/>
                 </TextBlock>
 
-                <ListView Height="30" Width="190" HorizontalAlignment="Right" 
-                      Template="{StaticResource ListViewRoundCorners}">
-                </ListView>
+                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                    <ComboBox Height="30" Width="190" HorizontalAlignment="Right"
+                          ItemsSource="{Binding Bloods}" IsSynchronizedWithCurrentItem="True"
+                          DisplayMemberPath="Service" SelectedItem="{Binding SelectedService}"/>
+
+                    <Button Height="30" Margin="10,0,0,0" Background="DeepSkyBlue"
+                            Command="{Binding AddServiceCommand}">
+                        <Image Source="\Resources\AddUser.png"/>
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
             </DockPanel>
-            <ListView Height="90"/>
+            <ListView Height="90" Margin="0, 5, 0, 5"
+                      ItemsSource="{Binding AddedServices, UpdateSourceTrigger=PropertyChanged}">
+                <ListView.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="6"/>
+                    </Style>
+                </ListView.Resources>
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Vertical" HorizontalAlignment="Left"/>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <TextBlock FontSize="12">
+                                <Run Text="{Binding Code}"/>
+                                <Run Text="{Binding Service}"/>
+                                <Run Text="{Binding Price}"/>
+                            </TextBlock>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackPanel>
 
         <TextBlock Grid.Row="4" Grid.Column="1"
                    Text="СУММА ЗАКАЗА:" Foreground="{StaticResource DarkGrayText}"/>
         <TextBlock Grid.Row="4" Grid.Column="1" 
                    HorizontalAlignment="Right" VerticalAlignment="Top"
-                   Text="0"/>
+                   Text="{Binding Price}"/>
         <Button Grid.Row="4" Grid.Column="1"
                 HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10"
                 Content="Сформировать заказ" Padding="10, 5, 10, 5" Foreground="#ecf0f1" Background="#3498db">

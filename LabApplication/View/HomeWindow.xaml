@@ -7,12 +7,13 @@
         xmlns:viewmodel="clr-namespace:LabApplication.ViewModel"
         d:DataContext="{d:DesignInstance Type=viewmodel:HomeViewModel}"
         mc:Ignorable="d"
-        Title="Лаборатория: Панель управления" Height="550" Width="900" MinHeight="300" MinWidth="660"
+        Title="Лаборатория: Панель управления" Height="600" Width="1000" MinHeight="600" MinWidth="700"
         WindowStartupLocation="CenterScreen"
-        FontSize="18" Icon="\Resources\Icon.ico" Closing="Window_Closing" Loaded="Window_Loaded">
+        FontSize="18" Closing="Window_Closing" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -48,9 +49,37 @@
         <Separator Grid.Row="1" VerticalAlignment="Top"/>
         
         <!-- вкладки -->
-        <StackPanel Orientation="Horizontal">
-            
-        </StackPanel>
-        <Frame x:Name="NavFrame" Grid.Row="1" Margin="0,5,0,0"/>
+        <DockPanel Grid.Row="1" Margin="5">
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Принять материал" Background="White" Foreground="#696969" FontSize="14"
+                    Padding="4">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+
+                <Button Content="Анализаторы" Background="White" Foreground="#696969" FontSize="14"
+                    Padding="4" Margin="10,0,0,0">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Right">
+                <Button Content="Назад" Background="White" Foreground="#696969" FontSize="14"
+                    Padding="4" Margin="10,0,0,0">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
+        </DockPanel>
+        <Frame x:Name="NavFrame" Grid.Row="2" Margin="0,5,0,0"/>
     </Grid>
 </Window>
