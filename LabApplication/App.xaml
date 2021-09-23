@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:LabApplication"
              StartupUri="View/AuthorizeWindow.xaml">
     <Application.Resources>
+        <!-- Версия textbox со скругленными углами -->
         <ControlTemplate x:Key="TextBoxRoundCorners" TargetType="{x:Type TextBoxBase}">
             <Border Background="{TemplateBinding Background}" 
                 x:Name="Bd" BorderBrush="Black"
@@ -23,6 +24,8 @@
                 </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
+        
+        <!-- Версия passwordbox со скругленными углами -->
         <ControlTemplate x:Key="PasswordBoxRoundCorners" TargetType="{x:Type PasswordBox}">
             <Border Background="{TemplateBinding Background}" 
                     x:Name="Bd" BorderBrush="Black"
@@ -42,6 +45,8 @@
                 </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
+        
+        <!-- Гиперссылка при наведении на которую появляется подчеркивание -->
         <Style TargetType="TextBlock" x:Key="HyperlinkUnderlineOnHover">
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
@@ -49,5 +54,12 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+
+        <!-- ListView со скругленными углами -->
+        <ControlTemplate x:Key="ListViewRoundCorners" TargetType="{x:Type ListView}">
+            <Border CornerRadius="8" BorderThickness="1" BorderBrush="Black">
+                <ItemsPresenter></ItemsPresenter>
+            </Border>
+        </ControlTemplate>
     </Application.Resources>
 </Application>

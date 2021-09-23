@@ -24,6 +24,7 @@ namespace LabApplication.View
         public HomeWindow()
         {
             InitializeComponent();
+            NavFrame.Navigate(new BiomaterialAcceptance());
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

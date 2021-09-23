@@ -7,12 +7,12 @@ using LabApplication.Model;
 using LabApplication.Misc;
 using LabApplication.Services;
 using LabApplication.Commands;
-
+using System.Diagnostics;
 namespace LabApplication.ViewModel
 {
     public class HomeViewModel : BaseViewModel
     {
-        private string currentUserName = CurrentAccount.CurrentUser.UserName;
+        private string currentUserName = CurrentAccount.CurrentUser?.UserName;
         private RelayCommand logoutCommand;
         public Action CloseWindowAction { get; set; }
         public string CurrentUserName
@@ -20,7 +20,7 @@ namespace LabApplication.ViewModel
             get => currentUserName;
             set => SetPropertyChanged(ref currentUserName, value);
         }
-        private string currentUserRole = CurrentAccount.CurrentUser.UserRole.GetDescription();
+        private string currentUserRole = CurrentAccount.CurrentUser?.UserRole.GetDescription();
         public string CurrentUserRole
         {
             get => currentUserRole;
@@ -30,10 +30,17 @@ namespace LabApplication.ViewModel
         public RelayCommand Logout => logoutCommand ??
             (logoutCommand = new RelayCommand(obj =>
             {
-                CurrentAccount.CurrentUser = null;
-                WindowService windowService = new WindowService();
-                windowService.OpenAuthWindow(new AuthorizeWindowViewModel());
-                CloseWindowAction();
+                try
+                {
+                    CurrentAccount.CurrentUser = null;
+
+                    // Закрываем окно. В ивенте на закртие окна откроется окно авторизации
+                    CloseWindowAction();
+                }
+                catch (Exception exception)
+                {
+                    Debug.WriteLine(exception.Message);
+                }
             }));
     }
 }

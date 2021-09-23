@@ -38,7 +38,7 @@
 
             <TextBox Name="LoginTextBox" 
                      Template="{StaticResource TextBoxRoundCorners}" Margin="0,10,0,10"
-                     Text="{Binding Path=UserName, UpdateSourceTrigger=PropertyChanged}"/>
+                     Text="{Binding UserName, UpdateSourceTrigger=PropertyChanged}"/>
 
             <PasswordBox x:Name="PasswordBox" 
                          Template="{StaticResource PasswordBoxRoundCorners}" 
@@ -72,7 +72,5 @@
                 </Style>
             </Button.Resources>
         </Button>
-
-        
     </Grid>
 </Window>

@@ -18,3 +18,5 @@ C:\lmao\visual studio projects\C#\LabApplication\LabApplication\obj\Debug\App.ba
 C:\lmao\visual studio projects\C#\LabApplication\LabApplication\obj\Debug\View\HomeWindow.g.cs
 C:\lmao\visual studio projects\C#\LabApplication\LabApplication\obj\Debug\View\HomeWindow.baml
 C:\lmao\visual studio projects\C#\LabApplication\LabApplication\obj\Debug\LabApplication.csproj.AssemblyReference.cache
+C:\lmao\visual studio projects\C#\LabApplication\LabApplication\obj\Debug\View\BiomaterialAcceptance.g.cs
+C:\lmao\visual studio projects\C#\LabApplication\LabApplication\obj\Debug\View\BiomaterialAcceptance.baml

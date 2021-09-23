@@ -41,5 +41,6 @@ namespace LabApplication
         {
             Application.Current.Shutdown();
         }
+
     }
 }

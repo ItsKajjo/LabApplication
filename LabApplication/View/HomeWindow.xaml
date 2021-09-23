@@ -7,7 +7,7 @@
         xmlns:viewmodel="clr-namespace:LabApplication.ViewModel"
         d:DataContext="{d:DesignInstance Type=viewmodel:HomeViewModel}"
         mc:Ignorable="d"
-        Title="Лаборатория: Панель управления" Height="550" Width="900" MinHeight="300" MinWidth="500"
+        Title="Лаборатория: Панель управления" Height="550" Width="900" MinHeight="300" MinWidth="660"
         WindowStartupLocation="CenterScreen"
         FontSize="18" Icon="\Resources\Icon.ico" Closing="Window_Closing" Loaded="Window_Loaded">
     <Grid>
@@ -16,6 +16,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
+        <!-- Верхняя панель -->
         <DockPanel Grid.Row="0">
             <Image Source="\Resources\Logo.png" HorizontalAlignment="Left" Margin="5"/>
             <TextBlock VerticalAlignment="Center"
@@ -45,6 +46,11 @@
         </DockPanel>
         
         <Separator Grid.Row="1" VerticalAlignment="Top"/>
+        
+        <!-- вкладки -->
+        <StackPanel Orientation="Horizontal">
+            
+        </StackPanel>
         <Frame x:Name="NavFrame" Grid.Row="1" Margin="0,5,0,0"/>
     </Grid>
 </Window>

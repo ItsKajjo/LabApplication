@@ -1,0 +1,112 @@
+﻿<Page x:Class="LabApplication.View.BiomaterialAcceptance"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:LabApplication.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="BiomaterialAcceptance" Background="White" FontSize="16">
+    <Page.Resources>
+        <!-- цвета для текста. Они здесь потому что, если вдруг нужно будет
+             изменить цвет текста, его не придется изменять у каждого по отдельности -->
+        <SolidColorBrush x:Key="DarkGrayText" Color="#595959"/>
+        <SolidColorBrush x:Key="LightGrayText" Color="#828282"/>
+    </Page.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.05*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.05*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Принятие биометариала" FontSize="24" Foreground="{StaticResource DarkGrayText}" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3"/>
+        <!--<StackPanel Orientation="Vertical" Grid.Row="1">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                    <TextBlock Text="Выберите пациента:" Foreground="{StaticResource DarkGrayText}"/>
+                    <TextBlock Text="Или создайте нового." Foreground="{StaticResource LightGrayText}"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <ListView Height="24" Width="120"/>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0, 10, 0, 0">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="Введите код пробирки (номер заказа):" Foreground="{StaticResource DarkGrayText}"/>
+                    <TextBlock Text="Используйте предложенный (рекомендуется), или введите вручную." Foreground="{StaticResource LightGrayText}"/>
+                </StackPanel>
+
+                <ListView Height="24" Width="120"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="Выберите предоставляемые услуги:" Foreground="{StaticResource DarkGrayText}"/>
+                    <TextBlock Text="Для формирования заказа необходимо выбрать хотя бы одну." Foreground="{StaticResource LightGrayText}"/>
+                </StackPanel>
+            </StackPanel>
+
+        </StackPanel>-->
+
+        <DockPanel Grid.Row="1" Grid.Column="1" Margin="0, 20, 0, 20">
+            <TextBlock VerticalAlignment="Center" DockPanel.Dock="Left">
+                <Run Text="Выберите пациента:" Foreground="{StaticResource DarkGrayText}"/>
+                <LineBreak/>
+                <Run Text="Или создайте нового." Foreground="{StaticResource LightGrayText}"/>
+            </TextBlock>
+
+            <ListView Height="30" Width="190" HorizontalAlignment="Right"
+                      Template="{StaticResource ListViewRoundCorners}"/>
+        </DockPanel>
+
+        <DockPanel Grid.Column="1" Grid.Row="2" Margin="0, 20, 0, 20">
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left">
+                <Run Text="Введите код пробирки (номер заказа):" Foreground="{StaticResource DarkGrayText}"/>
+                <LineBreak/>
+                <Run Text="Используйте предложенный (рекомендуется), или создайте новый" 
+                     Foreground="{StaticResource LightGrayText}"/>
+            </TextBlock>
+
+            <TextBox Template="{StaticResource TextBoxRoundCorners}" Height="30" Width="190" HorizontalAlignment="Right"/>
+        </DockPanel>
+
+        <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Vertical" Margin="0, 20, 0, 20">
+            <DockPanel>
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left">
+                <Run Text="Выберите предоставляемые услуги:" Foreground="{StaticResource DarkGrayText}"/>
+                <LineBreak/>
+                <Run Text="Для формирования заказа необходимо выбрать хотя бы одну." Foreground="{StaticResource LightGrayText}"/>
+                </TextBlock>
+
+                <ListView Height="30" Width="190" HorizontalAlignment="Right" 
+                      Template="{StaticResource ListViewRoundCorners}">
+                </ListView>
+            </DockPanel>
+            <ListView Height="90"/>
+        </StackPanel>
+
+        <TextBlock Grid.Row="4" Grid.Column="1"
+                   Text="СУММА ЗАКАЗА:" Foreground="{StaticResource DarkGrayText}"/>
+        <TextBlock Grid.Row="4" Grid.Column="1" 
+                   HorizontalAlignment="Right" VerticalAlignment="Top"
+                   Text="0"/>
+        <Button Grid.Row="4" Grid.Column="1"
+                HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10"
+                Content="Сформировать заказ" Padding="10, 5, 10, 5" Foreground="#ecf0f1" Background="#3498db">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="7"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+    </Grid>
+</Page>
