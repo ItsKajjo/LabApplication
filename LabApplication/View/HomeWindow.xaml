@@ -51,8 +51,8 @@
         <!-- вкладки -->
         <DockPanel Grid.Row="1" Margin="5">
             <StackPanel Orientation="Horizontal">
-                <Button Content="Принять материал" Background="White" Foreground="#696969" FontSize="14"
-                    Padding="4">
+                <Button Name="ShowBioPage"  Content="Принять материал" Background="White" Foreground="#696969" FontSize="14"
+                    Padding="4" Click="ShowBioPage_Click">
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="10"/>
@@ -80,6 +80,6 @@
                 </Button>
             </StackPanel>
         </DockPanel>
-        <Frame x:Name="NavFrame" Grid.Row="2" Margin="0,5,0,0"/>
+        <Frame x:Name="NavFrame" Grid.Row="2" Margin="0,5,0,0"  NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>

@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using LabApplication.Commands;
 using LabApplication.Model;
 using LabApplication.Services;
@@ -58,11 +59,15 @@ namespace LabApplication.ViewModel
             }
         }
         private ObservableCollection<Blood> addedServies;
+        private RelayCommand createOrderCommand;
+
         public ObservableCollection<Blood> AddedServices
         {
             get => addedServies;
             set => SetPropertyChanged(ref addedServies, value);
         }
+
+        // хранит выбранную услугу
         public Blood SelectedService { get; set; }
         public RelayCommand AddServiceCommand => addServiceCommand ??
             (addServiceCommand = new RelayCommand(obj =>
@@ -70,6 +75,21 @@ namespace LabApplication.ViewModel
                 if (SelectedService != null)
                 {
                     AddedServices.Add(SelectedService);
+                }
+            }));
+
+        public Patient SelectedPatient { get; set; }
+        public RelayCommand CreateOrderCommand => createOrderCommand ??
+            (createOrderCommand = new RelayCommand(obj =>
+            {
+                if (SelectedPatient != null && AddedServices.Count > 0)
+                {
+                    MessageBox.Show($"Заказ на сумму {Price} для пациента {SelectedPatient.FullName} сформирован.", "Заказ сформирован",
+                        MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Для заказа необходимо заполнить все поля");
                 }
             }));
     }

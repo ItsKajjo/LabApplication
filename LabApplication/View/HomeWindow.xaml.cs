@@ -43,5 +43,10 @@ namespace LabApplication.View
                 };
             }
         }
+
+        private void ShowBioPage_Click(object sender, RoutedEventArgs e)
+        {
+            NavFrame.Navigate(new BiomaterialAcceptance());
+        }
     }
 }
